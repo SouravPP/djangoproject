@@ -1,0 +1,10 @@
+    {% extends 'base.html' %}
+    {% load static %}
+    {% block content %}
+    {% for msg in message %}
+    {{msg}}
+    {% endfor %}
+    {{user.Name}}
+
+    <a href="{% url 'app1:display_table' %}">display</a>
+    {% endblock %}

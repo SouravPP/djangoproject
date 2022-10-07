@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% for msg in messages %}
+    {{msg}}
+    {% endfor %}
+    <form action="" method="post">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Place</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.Name}}</td>
+            <td>{{user.Place}}</td>
+            <td>{{user.Age}}</td>
+            <td>{{user.Email}}</td>
+            <td><a href="{% url 'app1:update' user.id %}">Update</a><a href="{% url 'app1:remove' user.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <input type="submit" value="save">
+    </form>
+    {% endblock %}
